@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEBSA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ========== BASE STYLES ========== */
+        :root {
+            --primary: #FAEDCD;
+            --secondary: #432818;
+            --light: #432818;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+        }
+
+        /* ========== HEADER WITH LOGO ========== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #432818 100%);
+            color: #432818;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px #432818(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+        }
+
+        .brand-text {
+            border-left: 2px solid var(--secondary);
+            padding-left: 1.5rem;
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            background: #432818;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* ========== PRODUCT GRID ========== */
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.547);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9faf7;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .product-image:hover {
+            transform: scale(1.05);
+        }
+
+        .price {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .price span {
+            color: var(--secondary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: rgb(64, 36, 36);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* ========== IMAGE ZOOM MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #432818(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoom 0.3s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0);}
+            to {transform: scale(1);}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--primary);
+            color: #432818;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .social-icons a {
+            color: #432818;
+            margin: 0 0.8rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .image-container {
+                height: 200px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-text {
+                border-left: none;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="header-content">
+            <img src="img/logo file/test 2 logo.png" alt="Lebsa Logo" class="logo">
+            <div class="be first be diffrent be unique">
+                <h1>LEBSA</h1>
+                <p>Premium Custom Apparel in Morocco</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Product Grid -->
+    <main>
+        <section class="products-container" id="products">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/lebsa carbet design.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>HOODIES LEBSA DESIGNE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/luffy mock up g5 pdf.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>ONE PIECE HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/palestine.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>PALESTINE HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/porche designe.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>PORCHE HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/carpet designe WHITE.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>YRUST HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/peace.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>PEACHE HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/ANAS DESIGN MOCK.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>NIKE HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/beHIND DESIGN MOCK UP.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>toji fushiguro HOODIE</h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <div class="product-card">
+                <div class="image-container">
+                    <img src="img/SALGOTE MOCK UP 2.jpg" alt="Hoodie Design" class="product-image">
+                </div>
+                <h3>SALGOTE HOODIE </h3>
+                <p class="price"><span>200</span> MAD</p>
+                <button class="cta-button">Order Now</button>
+            </div>
+            <!-- Product 2-8 (Repeat this block) -->
+            <!-- Paste 7 more product cards here -->
+            
+        </section>
+    </main>
+
+    <!-- Image Zoom Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="zoomedImage">
+    </div>
+  
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="margin-top: 1rem;">
+            Contact: <a href="lebsa.foryou@gmail.com" style="color: #432818;">lebsa.foryou@gmail.com</a> | 
+            WhatsApp: <a href="https://wa.me/+212705686616" style="color: #06411b;">+212705686616</a>
+        </p>
+    </footer>
+
+    <script>
+        // Image Zoom Functionality
+        const modal = document.getElementById("imageModal");
+        const zoomedImg = document.getElementById("zoomedImage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        document.querySelectorAll('.product-image').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = "flex";
+                zoomedImg.src = img.src;
+            });
+        });
+
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => {
+            if (event.target == modal) modal.style.display = "none";
+        }
+
+        // Product Card Hover Effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseover', () => card.style.transform = 'translateY(-5px)');
+            card.addEventListener('mouseout', () => card.style.transform = 'translateY(0)');
+        });
+    
+</body>
+</html>
